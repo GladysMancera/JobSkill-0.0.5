@@ -1,0 +1,28 @@
+{% extends "jobskill1/base.html"%}
+
+
+            {% load static %}
+
+            {% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <title>Redirección de Formulario</title>
+</head>
+<body>
+<form method="post">{% csrf_token %}
+        <label for="tipo_usuario">Selecciona tu tipo:</label>
+        <select id="tipo_usuario" name="tipo_usuario">
+            <option value="aspirante">Aspirante</option>
+            <option value="empresa">Empresa</option>
+        </select>
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
+
+{% endblock %}
