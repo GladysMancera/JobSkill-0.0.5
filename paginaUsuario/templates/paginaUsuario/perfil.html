@@ -1,0 +1,34 @@
+{% extends "jobskill1/base.html"%}
+
+
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+</head>
+<body>
+    <div class="profile-container">
+        <h1>Perfil de Usuario</h1>
+        <div class="profile-info">
+            <p><strong>Nombre:</strong> {{ user.username }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Fecha de Nacimiento:</strong> {{ user.date_joined }}</p>
+            <p><strong>Direccion:</strong> {{ user.date_direccion }}</p>
+            <p><strong>Numero de telefono:</strong> {{ user.date_telefono}}</p>
+            <p><strong>Genero:</strong> {{ user.date_genero }}</p>
+            <p><strong>Contraseña:</strong> {{ user.date_password }}</p>
+
+
+        </div>
+    </div>
+</body>
+</html>
+
+
+{% endblock %}

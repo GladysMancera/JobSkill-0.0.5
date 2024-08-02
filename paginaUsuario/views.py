@@ -4,3 +4,5 @@ from django.shortcuts import render
 
 def home(request):
     return render(request, "paginaUsuario/home.html")
+def perfil(request):
+    return render(request, "paginaUsuario/perfil.html")

@@ -3,4 +3,5 @@ from paginaUsuario.views import *
 
 urlpatterns=[
     path('', home, name="homeU"),
+    path('perfil/', perfil, name="perfilU"),
 ]
