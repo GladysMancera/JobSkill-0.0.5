@@ -1,0 +1,100 @@
+{% extends "jobskill1/base.html"%}
+
+
+{% load static %}
+
+{% block content %}
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferta de Empleo</title>
+    <style> <!--Diseño de la pagina-->
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        .job-details {
+            margin-top: 20px;
+        }
+        .job-details p {
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .apply-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #007BFF;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .apply-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
+    <script>  <!--Funciona para enviar y cambiar de pagina presionando solo un boton-->
+
+        function handleClick(){
+            window.location.href= "12345@gmail.com";
+            setTimeout(function(){
+                window.location.href= "resultado.html";
+            },1000);
+        }
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Desarrollador de Software</h1>
+        <h2>Empresa X</h2>
+        <div class="job-details">
+            <p><strong>Ubicación:</strong> Ciudad de México</p>
+            <p><strong>Tipo de empleo:</strong> Tiempo completo</p>
+            <p><strong>Salario:</strong> $40,000 - $50,000 MXN mensuales</p>
+            <p><strong>Turno y horario:</strong> Turno de 8 horas de Lunes a viernes</p>
+            <p><strong>Tipo de empleo:</strong> Permanente</p>
+            <br>
+            <p><strong>Descripción del trabajo:</strong></p>
+            <p>Estamos buscando un desarrollador de software talentoso y motivado para unirse a nuestro equipo en la Empresa XYZ. El candidato ideal tendrá experiencia en el desarrollo de aplicaciones web, conocimientos sólidos en HTML, CSS, JavaScript y frameworks como React o Angular.</p>
+            <p><strong>Responsabilidades:</strong></p>
+            <ul>
+                <li>Desarrollar y mantener aplicaciones web de alta calidad.</li>
+                <li>Trabajar en estrecha colaboración con otros desarrolladores y diseñadores.</li>
+                <li>Resolver problemas técnicos y de rendimiento.</li>
+                <li>Escribir código limpio y bien documentado.</li>
+            </ul>
+            <p><strong>Requisitos:</strong></p>
+            <ul>
+                <li>Título en Informática, Ingeniería de Software o campo relacionado.</li>
+                <li>Experiencia mínima de 3 años en desarrollo de software.</li>
+                <li>Conocimientos en HTML, CSS, JavaScript y frameworks como React o Angular.</li>
+                <li>Habilidades de resolución de problemas y pensamiento crítico.</li>
+                <li>Capacidad para trabajar en equipo y comunicarse efectivamente.</li>
+            </ul>
+        </div>
+        <button class="apply-btn" onclick="handleClick()">Apicar ahora</button>
+    </div>
+</body>
+</html>
+
+{% endblock %}
