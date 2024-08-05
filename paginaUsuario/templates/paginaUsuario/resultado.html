@@ -1,0 +1,50 @@
+{% extends "jobskill1/base.html" %}
+
+{% load static %}
+
+{% block content %}
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Oferta enviada</title>
+        <style>
+            .aviso {
+                width: 80%;
+                margin: 0 auto;
+                background-color: #fff;
+                padding: 20px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                margin-top: 50px;
+                text-align: center;
+                font-size: 29px;
+            }
+
+            .button {
+                display: inline-block;
+                padding: 10px 20px;
+                margin: 10px;
+                border: none;
+                border-radius: 5px;
+                color: #fff;
+                cursor: pointer;
+            }
+
+            .button-cancelar {
+                background-color: red; /* Color para el botón Cancelar Solicitud */
+            }
+
+            .button-regresar {
+                background-color: blue; /* Color para el botón Regresar al inicio */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="aviso">
+            <p>Felicidades, has enviado tus documentos correctamente. Recibirás una notificación con el resultado en las próximas horas o días.</p>
+
+            <button class="button button-cancelar">Cancelar Solicitud</button>
+            <button class="button button-regresar" onclick="window.location.href='trabajos.html';">Regresar al inicio</button>        </div>
+    </body>
+</html>
+{% endblock %}
