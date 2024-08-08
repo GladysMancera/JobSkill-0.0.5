@@ -1,0 +1,109 @@
+{% extends "jobskill1/base.html"%}
+
+
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Empresa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .header button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .header button:hover {
+            background-color: #0056b3;
+        }
+        .company-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .company-info img {
+            width: 150px;
+            height: auto;
+            margin-right: 20px;
+        }
+        .company-info h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .company-info p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 5px 0;
+        }
+        .company-info .contact-info {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Perfil de la Empresa</h1>
+            <button onclick="editCompanyInfo()">Editar Información</button>
+        </div>
+
+        <div class="company-info">
+            <img src="logo.png" alt="Logo de la Empresa"> <!-- Cambia 'logo.png' al nombre del archivo de tu logo -->
+            <div>
+                <h2>CleanHome</h2>
+                <p><strong>Descripción:</strong> Somos una empresa dedicada a los servicios del hogar que proporciona personal especializado en labores del hogar.</p>
+                <p><strong>Ubicacion:</strong> Valle de Santiago, Gto.</p>
+                <p><strong>Objetivo:</strong> Nuestro objetivo es satisfacer las necesidades de nuestros clientes al brindarles un servicio de calidad.</p>
+                <div class="contact-info">
+                    <p><strong>Número de Contacto:</strong> +52 123 456 7890</p>
+                    <p><strong>Correo Electrónico:</strong> contacto@empresa.com</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function editCompanyInfo() {
+            // Lógica para editar la información de la empresa
+            alert("Editar información de la empresa");
+        }
+    </script>
+</body>
+</html>
+ {% endblock %}
