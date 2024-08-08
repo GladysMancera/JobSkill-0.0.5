@@ -1,0 +1,152 @@
+{% extends "jobskill1/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificaciones</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #notification-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .notification {
+            background-color: white;
+            color: #333;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .notification:hover {
+            background-color: #e9ecef;
+        }
+
+        /* Estilos para el modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1050;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .modal-content h2 {
+            margin: 0 0 10px;
+            font-size: 24px;
+        }
+
+        .modal-content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .modal-content button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .modal-content button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <br><h1>Notificaciones</h1><br>
+    <div id="notification-container"></div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h2 id="modal-title">Título de la Notificación</h2>
+            <p id="modal-message">Mensaje de la notificación</p>
+            <button onclick="closeModal()">Cerrar</button>
+        </div>
+    </div>
+
+    <script>
+        // Función para agregar una notificación
+        function addNotification(title, message) {
+            const container = document.getElementById('notification-container');
+
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+
+            notification.innerHTML = `<strong>${title}</strong>`;
+
+            notification.onclick = () => {
+                openModal(title, message);
+            };
+
+            container.appendChild(notification);
+        }
+
+        // Función para abrir el modal
+        function openModal(title, message) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-message').innerText = message;
+            const modal = document.getElementById('modal');
+            modal.style.display = 'flex';
+        }
+
+        // Función para cerrar el modal
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'none';
+        }
+
+        // Agregar notificaciones de ejemplo
+        addNotification('Oportunidad en CFE', 'Vacante para Ingeniero Eléctrico en la CFE. Experiencia mínima de 3 años requerida.');
+        addNotification('Puesto en Pemex', 'Oferta de trabajo para Analista de Datos en Pemex. Experiencia en análisis y manejo de datos.');
+        addNotification('Vacante en PEMEX', 'Se busca Técnico en Mantenimiento para PEMEX. Conocimientos en maquinaria industrial.');
+        addNotification('Oferta de empleo en ISSSTE', 'Se requiere Médico General para el ISSSTE. Buenas condiciones laborales y prestaciones.');
+        addNotification('Trabajo en SEP', 'Plaza disponible para Educador en la Secretaría de Educación Pública. Experiencia en educación básica.');
+    </script>
+</body>
+</html>
+
+
+{% endblock %}
