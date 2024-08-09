@@ -14,3 +14,7 @@ def trabajosD(request):
     return render(request, "paginaUsuario/trabajosD.html")
 def resultado(request):
     return render(request, "paginaUsuario/resultado.html")
+def postulacion(request):
+    return render(request, "paginaUsuario/postulacion.html")
+def notificacion(request):
+    return render(request, "paginaUsuario/notificacion.html")
