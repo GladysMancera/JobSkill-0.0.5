@@ -1,0 +1,89 @@
+{% extends "jobskill1/base.html"%}
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Candidatos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .candidate {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .candidate h3 {
+            margin: 0 0 10px;
+        }
+        .candidate a {
+            display: inline-block;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        .candidate button {
+            margin-right: 10px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            color: #fff;
+        }
+        .accept {
+            background-color: #28a745;
+        }
+        .reject {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Notificaciones de Candidatos</h1>
+
+        <!-- Ejemplo de candidato 1 -->
+        <div class="candidate">
+            <h3>Nombre del Candidato 1</h3>
+            <p>Email: candidato1@example.com</p>
+            <a href="documentos/candidato1.pdf" download>Descargar Solicitud</a>
+            <div>
+                <button class="accept" onclick="changeStatus('Candidato 1', 'aceptado')">Aceptar</button>
+                <button class="reject" onclick="changeStatus('Candidato 1', 'rechazado')">Rechazar</button>
+            </div>
+        </div>
+
+        <!-- Ejemplo de candidato 2 -->
+        <div class="candidate">
+            <h3>Nombre del Candidato 2</h3>
+            <p>Email: candidato2@example.com</p>
+            <a href="documentos/candidato2.pdf" download>Descargar Solicitud</a>
+            <div>
+                <button class="accept" onclick="changeStatus('Candidato 2', 'aceptado')">Aceptar</button>
+                <button class="reject" onclick="changeStatus('Candidato 2', 'rechazado')">Rechazar</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function changeStatus(candidato, estado) {
+            alert('El candidato ' + candidato + ' ha sido ' + estado + '.');
+            // Aquí puedes agregar código para enviar la notificación al servidor
+            // y actualizar el estado del candidato en tu sistema.
+        }
+    </script>
+</body>
+</html>
+{% endblock %}

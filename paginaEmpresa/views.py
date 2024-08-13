@@ -13,3 +13,6 @@ def editar(request):
 
 def perfil(request):
     return render(request, "paginaEmpresa/perfil.html")
+
+def solicitud(request):
+    return render(request, "paginaEmpresa/solicitud.html")
