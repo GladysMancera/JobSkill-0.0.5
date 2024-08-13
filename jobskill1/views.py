@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render
 
 # Create your views here.
 #son las vistas que se han generado de la pagina 
@@ -33,3 +34,4 @@ def registroU(request):
 def registroE(request):
 
      return render(request, "Jobskill1/RegistroE.html" )
+
