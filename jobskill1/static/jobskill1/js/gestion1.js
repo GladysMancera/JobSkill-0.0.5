@@ -4,12 +4,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     const form = document.querySelector("form");
-    const username = document.getElementById("nombre");
+    const nombre = document.getElementById("nombre");
     const password = document.getElementById("password");
 
     form.addEventListener("submit", function(event) {
         
-        if (username.value.trim() === "") {
+        if (nombre.value.trim() === "") {
 
             alert("El nombre de usuario no puede estar vacío.");
             event.preventDefault();
