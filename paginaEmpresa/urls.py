@@ -7,5 +7,4 @@ urlpatterns=[
     path('editar/', editar, name="editar"),
     path('perfil/', perfil, name="perfil"),
     path('solicitud/', solicitud, name="solicitud"),
-    
 ]
