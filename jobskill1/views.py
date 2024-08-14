@@ -14,7 +14,7 @@ def contenido(request):
 
 def login(request):
 
-     return render(request, "Jobskill1/login.html" )
+     return render(request, "registration/login.html" )
 
 def registro(request): #esta vista permite la funcion de elegir el tipo de usuario
      if request.method == 'POST':
@@ -25,7 +25,7 @@ def registro(request): #esta vista permite la funcion de elegir el tipo de usuar
                return redirect('registroE.html')
           return render(request, 'registro.html')
 
-     return render(request, "Jobskill1/registro.html" )
+     return render(request, "Jobskill1/TipoUsuario.html" )
 
 
 def registroU(request):

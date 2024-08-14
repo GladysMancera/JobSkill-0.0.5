@@ -23,4 +23,5 @@ urlpatterns = [
     path('', include('jobskill1.urls')), #se cargan todas urls del proyecto lo que permite no tener demaciados path
     path('U/', include('paginaUsuario.urls')),
     path('E/', include('paginaEmpresa.urls')),
+    path('accounts/', include('django.contrib.auth.urls'))
 ]
