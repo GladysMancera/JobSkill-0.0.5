@@ -1,28 +1,24 @@
 {% extends "jobskill1/base.html"%}
 
+{% load static %}
 
-            {% load static %}
-
-            {% block content %}
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="">
-    <title>Redirección de Formulario</title>
-</head>
-<body>
-<form method="post">{% csrf_token %}
-        <label for="tipo_usuario">Selecciona tu tipo:</label>
-        <select id="tipo_usuario" name="tipo_usuario">
-            <option value="aspirante">Aspirante</option>
-            <option value="empresa">Empresa</option>
+{% block content %}
+<div class="container" style="width: 50%;">
+    <form class="form-box" method="get">{% csrf_token %}
+    <div class="form-group">
+        <label for="tipo_usuario" style="text-align: center;">
+            <h5>Para registrar un usuario, por favor, especifique el tipo de usuario que desea crear:</label>
+        </h5>
+        <br/>
+        <select id="tipo_usuario" name="tipo_usuario" style="width: 30%; margin: 0px 35%;">
+            <option value="0">Seleccione una opción</option>
+            <option value="1">Aspirante</option>
+            <option value="2">Empresa</option>
         </select>
-        <button type="submit">Enviar</button>
+        <br/>
+        <br/>
+        <button type="submit" class="btn btn-primary" style="width: 30%; margin: 0px 35%;">Enviar</button>
+    </div>
     </form>
-</body>
-</html>
-
+</div>
 {% endblock %}

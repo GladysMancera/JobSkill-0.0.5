@@ -1,6 +1,7 @@
 
 {% extends "jobskill1/base.html"%}
 
+{% load crispy_forms_tags%}
 
 {% load static %}
 
@@ -13,16 +14,8 @@
             <div class="card body">
                 <form action="#" method="post" style="margin: 5%;">
                     {% csrf_token %}
-                    <div class="input-group">
-                        <label for="nombre">Usuario</label>
-                        <input type="text" id="nombre" name="username" required>
-                    </div>
-                    <div class="input-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password" required>
-                    </div>
-                    <br/>
-                    <button type="submit">Login</button>
+                    {{ form | crispy }}
+                    <button class="btn btn-primary" type="submit">Ingresar</button>
                 </form>
             </div>
         </div>
