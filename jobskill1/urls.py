@@ -7,9 +7,7 @@ from jobskill1.views import *
 urlpatterns = [
     path('', home, name="home"),
     path('contenido/', contenido, name="contenido"),
-    path('login/', login, name="login"),
+    path('login/', logueo, name="login"),
     path('registro/', registro, name="registro"),
     path('tipouser/', tipoUsuario, name="tipoUser"),
-    path('registroU/', registroU, name="registroU"),
-    path('registroE/', registroE, name="registroE"),
 ]

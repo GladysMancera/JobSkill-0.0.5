@@ -125,7 +125,7 @@ STATIC_URL = 'static/'
 
 #aquí es donde se guardara toda la media, los archivos subidos
 MEDIA_URL='media/'
-MEDIA_ROOT=BASE_DIR / 'media',
+MEDIA_ROOT=BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -140,3 +140,6 @@ LOGOUT_REDIRECT_URL='home'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+#Esto sirve para decir que ahora los usuarios se harán desde el modelo en la aplicación "jobskill1" llamado "CustomUser"
+AUTH_USER_MODEL = 'jobskill1.CustomUser'

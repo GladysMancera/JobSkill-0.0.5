@@ -16,7 +16,7 @@ class crearUsuarioE(UserCreationForm):
 
     def save(self, commit=True):
         user = super().save(commit=False)
-        user.is_empresa = True
+        user.empresa = True
         if commit:
             user.save()
             empresa_profile = Empresa.objects.create(
@@ -37,7 +37,7 @@ class crearUsuario(UserCreationForm):
     apellido_paterno=forms.CharField(max_length=50)
     apellido_materno=forms.CharField(max_length=50, required=False)
     genero=forms.CharField(max_length=50)
-    foto=forms.ImageField()
+    foto=forms.ImageField(required=False)
     fecha_de_nacimiento=forms.DateField()
 
     class Meta:
@@ -46,12 +46,12 @@ class crearUsuario(UserCreationForm):
 
     def save(self, commit=True):
         user = super().save(commit=False)
-        user.is_empresa = True
+        user.usuario = True
         if commit:
             user.save()
             usuarios_profile = Usuarios.objects.create(
                 user=user,
-                nombre=self.cleaned_data.get('nombre_empresa'),
+                nombre=self.cleaned_data.get('nombre'),
                 direccion=self.cleaned_data.get('direccion'),
                 telefono=self.cleaned_data.get('telefono'),
                 apellido=self.cleaned_data.get('apellido_paterno'),

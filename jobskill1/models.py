@@ -29,7 +29,7 @@ class Usuarios(models.Model):
     apellido=models.CharField(max_length=50)
     apellido2=models.CharField(max_length=50, blank=True, null=True)
     genero=models.CharField(max_length=50)
-    foto=models.ImageField(upload_to="Usuarios")
+    foto=models.ImageField(upload_to="Usuarios", blank=True, null=True)
     fecha_nacimiento=models.DateField()
     def __str__(self):
         return self.nombre
