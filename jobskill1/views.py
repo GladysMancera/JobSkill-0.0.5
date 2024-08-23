@@ -45,8 +45,7 @@ def registro(request):
                if formCrear.is_valid():
                     user = formCrear.save()
                     login(request, user)
-                    formCrear.save()
-                    return redirect ("home")
+                    return redirect ("homeU")
                else:
                     return render(request, "registration/register.html", {"form": formCrear})
           else:
@@ -54,8 +53,8 @@ def registro(request):
                if formCrear.is_valid():
                     user=formCrear.save()
                     login(request, user)
-                    formCrear.save()
-                    return render(request, "jobskill1/home.html")
+                    
+                    return redirect("homeE")
                else:
                     return render(request, "registration/register.html", {"form": formCrear})
      else: 
