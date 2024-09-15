@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def home(request):
     return render(request, "paginaUsuario/home.html")
+@login_required
 def perfil(request):
     return render(request, "paginaUsuario/perfil.html")
 def registro(request):
