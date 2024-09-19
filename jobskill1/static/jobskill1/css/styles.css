@@ -11760,3 +11760,30 @@ html {
 .submit-btn:hover {
   background: #065a9e;
 }
+
+.job-buttons {
+  display: flex;
+  align-items: center;
+}
+.job-buttons button {
+  margin-right: 8px;
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.job-buttons button:hover {
+  background-color: #218838;
+}
+.edit-icon, .delete-icon {
+  font-size: 16px;
+  color: #007bff;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.edit-icon:hover, .delete-icon:hover {
+  color: #0056b3;
+}
