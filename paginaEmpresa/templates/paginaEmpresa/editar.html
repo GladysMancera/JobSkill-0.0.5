@@ -9,6 +9,14 @@
 
         <h2>Ofertas Laborales Publicadas</h2>
 
+        {% if not puestos %}
+            <div class="card text-start">
+                <div class="card-body">
+                    <h4 class="card-title" style="text-align: center;">Aún no hay puestos ingresados</h4>
+                </div>
+            </div>           
+        {% endif %}
+
         {% for puesto in puestos %}
         
         <div class="job-box" id="job1" style="border: 1px solid #ccc; padding: 16px; margin: 16px 0; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; background-color: #f9f9f9;">
