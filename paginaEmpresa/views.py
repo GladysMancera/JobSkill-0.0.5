@@ -7,10 +7,22 @@ from jobskill1.models import Empresa
 # Create your views here.
 @login_required
 def home(request):
+    if request.user.is_authenticated:
+        if request.user.empresa==True:
+            request.session["tipo_usuario"]="1"
+        elif request.user.usuario==True:
+            request.session["tipo_usuario"]="2"
+            return redirect("homeU")
     puestos=Puesto.objects.all()
     return render(request, "paginaEmpresa/editar.html", {"puestos":puestos})
 @login_required
 def agregar(request):
+    if request.user.is_authenticated:
+        if request.user.empresa==True:
+            request.session["tipo_usuario"]="1"
+        elif request.user.usuario==True:
+            request.session["tipo_usuario"]="2"
+            return redirect("homeU")
     if request.method=="POST":
         form=PuestoForm(request.POST)
         if form.is_valid:
@@ -29,7 +41,19 @@ def agregar(request):
     return render(request, "paginaEmpresa/agregar.html", {"form":form})
 @login_required
 def perfil(request):
+    if request.user.is_authenticated:
+        if request.user.empresa==True:
+            request.session["tipo_usuario"]="1"
+        elif request.user.usuario==True:
+            request.session["tipo_usuario"]="2"
+            return redirect("homeU")
     return render(request, "paginaEmpresa/perfil.html")
 @login_required
 def solicitud(request):
+    if request.user.is_authenticated:
+        if request.user.empresa==True:
+            request.session["tipo_usuario"]="1"
+        elif request.user.usuario==True:
+            request.session["tipo_usuario"]="2"
+            return redirect("homeU")
     return render(request, "paginaEmpresa/solicitud.html")

@@ -1,13 +1,23 @@
 from django.shortcuts import render, HttpResponse, redirect
-from django.shortcuts import render
 from .forms import crearUsuario, crearUsuarioE
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 
 # Create your views here.
 #son las vistas que se han generado de la pagina 
 
 def home(request):
-    return render(request, "jobskill1/home.html" )
+     if request.user.is_authenticated:
+          if request.user.empresa==True:
+               request.session["tipo_usuario"]="1"
+               return redirect("homeE")
+          elif request.user.usuario==True:
+               request.session["tipo_usuario"]="2"
+               return redirect("homeU")
+     return render(request, "jobskill1/home.html" )
+
+def cerrar(request):
+     logout(request)
+     return redirect("home")
 
 def contenido(request):
      return render(request, "jobskill1/contenido.html" )
