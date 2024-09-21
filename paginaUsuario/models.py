@@ -1,14 +1,13 @@
 from django.db import models
+from paginaEmpresa.models import Puesto
+from jobskill1.models import Usuarios
 
 # Create your models here.
-"""class Usuarios(models.Model):
-    nombre = models.CharField(max_length=30)
-    direccion = models.CharField(max_length=30)
-    telefono = models.CharField(max_length=10)
-    email = models.EmailField(max_length=30)
-    apellido = models.CharField(max_length=20)
-    genero = models.CharField(max_length=15)
-    fecha_nacimiento = models.DateField()
-    password1 = models.CharField(max_length=8)  
-    password2 = models.CharField(max_length=8)  
-"""
+class Solicitud(models.Model):
+    postulante=models.ForeignKey(Usuarios, on_delete=models.CASCADE)
+    puesto = models.ForeignKey(Puesto, on_delete=models.CASCADE)
+    cv = models.FileField(upload_to="Candidatos")
+    solicitudD = models.CharField(max_length=100, blank=True, null=True)
+    created=models.DateTimeField(auto_now_add=True)
+    updated=models.DateTimeField(auto_now_add=True)  
+

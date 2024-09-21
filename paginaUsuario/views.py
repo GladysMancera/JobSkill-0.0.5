@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from .forms import solicitudForm
 
 
 # Create your views here.
@@ -39,7 +40,8 @@ def postulacion(request):
     if request.user.is_authenticated:
         if request.user.empresa==True:
             return redirect("homeE")
-    return render(request, "paginaUsuario/postulacion.html")
+    form=solicitudForm()
+    return render(request, "paginaUsuario/postulacion.html", {"form":form})
 def notificacion(request):
     if request.user.is_authenticated:
         if request.user.empresa==True:
