@@ -19,45 +19,31 @@
                                 <!-- Note: Set the link href target to a PDF file within your project-->
                             </div>
                             <!-- Experience Card 1-->
+                            {% for puesto in puestos %}
                             <div class="card shadow border-0 rounded-4 mb-5">
                                 <div class="card-body p-5">
                                     <div class="row align-items-center gx-5">
-                                        <div class="col text-center text-lg-start mb-4 mb-lg-0">
+                                        <div class="col text-center text-lg-start mb-4 mb-lg-0" style="width: 20%;">
                                             <div class="bg-light p-4 rounded-4">
                                                 <div class="text-primary fw-bolder mb-2">Nueva oferta de trabajo</div>
-                                                <div class="small fw-bolder">Electricista</div>
-                                                <div class="small text-muted">CFE</div>
+                                                <div class="small fw-bolder">{{puesto.nombrePuesto}}</div>
+                                                <div class="small text-muted">{{puesto.empresa}}</div>
+                                                <div class="small text-muted">${{puesto.sueldoBase}}</div>
+                                                <div class="small text-muted">{{puesto.beneficios}}</div>
                                                 <div class="small text-muted">Valle de Santiago, gto.</div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-8"><div>Buscamos un electricista experimentado para unirse a nuestro equipo.
-                                            El candidato ideal será responsable de la instalación, mantenimiento y reparación de sistemas eléctricos en diversos entornos. 
-                                            Deberá garantizar que todos los trabajos se realicen de acuerdo con los estándares de seguridad y las regulaciones locales.</div></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Experience Card 2-->
-                            <div class="card shadow border-0 rounded-4 mb-5">
-                                <div class="card-body p-5">
-                                    <div class="row align-items-center gx-5">
-                                        <div class="col text-center text-lg-start mb-4 mb-lg-0">
-                                            <div class="bg-light p-4 rounded-4">
-                                                <div class="text-primary fw-bolder mb-2">Hace 1 mes</div>
-                                                <div class="small fw-bolder">Cajera</div>
-                                                <div class="small text-muted">ACSA</div>
-                                                <div class="small text-muted">Valle de Santiago, gto.</div>
-                                            </div>
+                                        <div class="col-lg-8">
+                                            <div>{{puesto.descripcion}}</div>
                                         </div>
-                                        <div class="col-lg-8"><div>Buscamos una cajera responsable y amigable para unirse a nuestro equipo en el supermercado.
-                                            La persona en este puesto será responsable de brindar un servicio al cliente excepcional, procesar transacciones de manera precisa y eficiente, 
-                                            y mantener el área de la caja ordenada.</div></div>
                                     </div>
                                 </div>
                             </div>
+                            {% endfor %}
                         </section>
                         <!-- Education Section-->
+                        <!--
                         <section>
-                            <!-- Education Card 1-->
                             <div class="card shadow border-0 rounded-4 mb-5">
                                 <div class="card-body p-5">
                                     <div class="row align-items-center gx-5">
@@ -78,7 +64,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Education Card 2-->
+                            
                             <div class="card shadow border-0 rounded-4 mb-5">
                                 <div class="card-body p-5">
                                     <div class="row align-items-center gx-5">
@@ -99,11 +85,9 @@
                                     </div>
                                 </div>
                             </div>
-                       
+                        </section>
+                        -->
                     </div>
                 </div>
             </div>
-        </main>
-
-
 {% endblock %}

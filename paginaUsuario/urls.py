@@ -2,9 +2,8 @@ from django.urls import path
 from paginaUsuario.views import *
 
 urlpatterns=[
-    path('', home, name="homeU"),
     path('perfil/', perfil, name="perfilU"),
-    path('trabajos/', trabajos, name="trabajosU"),
+    path('', trabajos, name="homeU"),
     path('trabajosD/', trabajosD, name="trabajosDU"),
     path('resultado/', resultado, name="resultadoU"),
     path('postulacion/', postulacion, name="postulacion"),
