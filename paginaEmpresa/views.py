@@ -20,7 +20,7 @@ def agregar(request):
             return redirect("homeU")
     if request.method=="POST":
         form=PuestoForm(request.POST)
-        if form.is_valid:
+        if form.is_valid():
             puesto=form.save(commit=False)
             try:
                 empresa=Empresa.objects.get(user=request.user)

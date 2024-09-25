@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import solicitudForm
 from paginaEmpresa.models import Puesto
-from jobskill1.models import Empresa
+from jobskill1.models import Empresa, Usuarios
 
 
 # Create your views here.
@@ -41,7 +41,24 @@ def postulacion(request):
     if request.user.is_authenticated:
         if request.user.empresa==True:
             return redirect("homeE")
+    if request.method=="POST":
+        solicitud=solicitudForm(request.POST, request.FILES)
+        puesto=Puesto.objects.get(id=request.session.get("id"))
+        empresa=Empresa.objects.get(nombre=puesto.empresa)
+        if solicitud.is_valid():
+            soli=solicitud.save(commit=False)
+            try:
+                usuario=Usuarios.objects.get(user=request.user)
+                soli.postulante=usuario
+                soli.puesto=puesto
+                soli.save()
+                return redirect("homeU")
+            except Usuarios.DoesNotExist:
+                solicitud.add_error(None, "No se encontró una empresa asociada con este usuario.")
+        else:
+            return render(request, "paginaUsuario/postulacion.html", {"form":solicitud, "puesto":puesto, "empresa":empresa})
     id=request.GET.get("id")
+    request.session["id"]=id
     if id is not None:
         try:
             id=int(id)
@@ -50,6 +67,7 @@ def postulacion(request):
     puesto=Puesto.objects.get(id=id)
     empresa=Empresa.objects.get(nombre=puesto.empresa)
     form=solicitudForm()
+    request.session["puesto"]=puesto.id
     return render(request, "paginaUsuario/postulacion.html", {"form":form, "puesto":puesto, "empresa":empresa})
 def notificacion(request):
     if request.user.is_authenticated:

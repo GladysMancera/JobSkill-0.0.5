@@ -20,9 +20,23 @@ def cerrar(request):
      return redirect("home")
 
 def contenido(request):
+     if request.user.is_authenticated:
+          if request.user.empresa==True:
+               request.session["tipo_usuario"]="1"
+               return redirect("homeE")
+          elif request.user.usuario==True:
+               request.session["tipo_usuario"]="2"
+               return redirect("homeU")
      return render(request, "jobskill1/contenido.html" )
 
 def logueo(request):
+     if request.user.is_authenticated:
+          if request.user.empresa==True:
+               request.session["tipo_usuario"]="1"
+               return redirect("homeE")
+          elif request.user.usuario==True:
+               request.session["tipo_usuario"]="2"
+               return redirect("homeU")
      return render(request, "registration/login.html" )
 
 def tipoUsuario(request): #esta vista permite la funcion de elegir el tipo de usuario #No en funcionamiento
@@ -48,10 +62,15 @@ def registroU(request): #No en funcionamiento
      return render(request, "registration/register.html", {"form" : crearE})
 
 def registro(request):
+     if request.user.is_authenticated:
+          if request.user.empresa==True:
+               return redirect("homeE")
+          elif request.user.usuario==True:
+               return redirect("homeU")
      if request.method=="POST":
           tipo=request.session.get("tipo_usuario")
           if tipo=="1":
-               formCrear=crearUsuario(request.POST)
+               formCrear=crearUsuario(request.POST, request.FILES)
                if formCrear.is_valid():
                     user = formCrear.save()
                     login(request, user)

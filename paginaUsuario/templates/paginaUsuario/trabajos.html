@@ -25,16 +25,18 @@
                                     <div class="row align-items-center gx-5">
                                         <div class="col text-center text-lg-start mb-4 mb-lg-0" style="width: 20%;">
                                             <div class="bg-light p-4 rounded-4">
-                                                <div class="text-primary fw-bolder mb-2">Nueva oferta de trabajo</div>
-                                                <div class="small fw-bolder">{{puesto.nombrePuesto}}</div>
+                                                <div class="text-primary fw-bolder mb-2">{{puesto.nombrePuesto}}</div>
+                                                
                                                 <div class="small text-muted">{{puesto.empresa}}</div>
                                                 <div class="small text-muted">${{puesto.sueldoBase}}</div>
                                                 <div class="small text-muted">{{puesto.beneficios}}</div>
-                                                <div class="small text-muted">Valle de Santiago, gto.</div>
+                                                <div class="small text-muted">Requisitos: {{puesto.requisitos}}</div>
+                                                <div class="small fw-bolder">{{puesto.created}}</div>
                                             </div>
                                         </div>
                                         <div class="col-lg-8">
-                                            <div>{{puesto.descripcion}}</div>
+                                            <div>{{puesto.descripcion}}</div><br>
+                                            <div class="small text-muted" style="text-align-last: center;"><a class="btn btn-success" href="/U/postulacion/?id={{puesto.id}}"><strong>Me interesa</strong></a></div>
                                         </div>
                                     </div>
                                 </div>

@@ -7,7 +7,7 @@
 {% block content %}
 
     <div class="container" style="width: 50%;">
-        <form class="form-box" method="post">{% csrf_token %}
+        <form class="form-box" method="post" enctype="multipart/form-data">{% csrf_token %}
             <div class="form-group">
                 {{form | crispy}}
                 <button type="submit" class="btn btn-primary" style="width: 30%; margin: 0px 35%;">Registrarse</button>
