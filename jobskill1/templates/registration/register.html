@@ -7,12 +7,36 @@
 {% block content %}
 
     <div class="container" style="width: 50%;">
-        <form class="form-box" method="post" enctype="multipart/form-data">{% csrf_token %}
+        <form id="registro" class="form-box" method="post" enctype="multipart/form-data">{% csrf_token %}
             <div class="form-group">
                 {{form | crispy}}
-                <button type="submit" class="btn btn-primary" style="width: 30%; margin: 0px 35%;">Registrarse</button>
+                <button type="submit" class="btna btn btn-primary" style="width: 30%; margin: 0px 35%;">Registrarse</button>
             </div>
         </form>
     </div>
     <script src="{% static 'jobskill1/js/gestion.js' %}" defer></script>
+    <!--Alerta de confirmación al mandar formulario de registro-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        document.querySelector('.btna').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevenir el envío automático del formulario
+
+            Swal.fire({
+                title: "¿Seguro que todos los datos son correctos?",
+                text: "Esta acción no se podrá deshacer. Asegurate de que no haya errores antes de continuar.",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, estoy seguro',
+                cancelButtonText: "Cancelar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Enviar el formulario si el usuario confirma
+                    document.getElementById('registro').submit();
+                }
+            });
+        });
+    </script>
+
 {% endblock %}

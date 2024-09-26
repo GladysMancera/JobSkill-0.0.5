@@ -1,3 +1,4 @@
+from django.http import HttpResponseBadRequest
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import solicitudForm
@@ -7,7 +8,7 @@ from jobskill1.models import Empresa, Usuarios
 
 # Create your views here.
 @login_required
-def home(request):
+def home(request): #No en funcionamiento
     if request.user.is_authenticated:
         if request.user.empresa==True:
             return redirect("homeE")
@@ -19,7 +20,7 @@ def perfil(request):
             return redirect("homeE")
     return render(request, "paginaUsuario/perfil.html")
 @login_required
-def trabajos(request):
+def trabajos(request): #Este es el home
     if request.user.is_authenticated:
         if request.user.empresa==True:
             return redirect("homeE")
@@ -52,7 +53,8 @@ def postulacion(request):
                 soli.postulante=usuario
                 soli.puesto=puesto
                 soli.save()
-                return redirect("homeU")
+                puestos=Puesto.objects.all()
+                return render(request, "paginaUsuario/trabajos.html", {"puestos":puestos, "alert":True})
             except Usuarios.DoesNotExist:
                 solicitud.add_error(None, "No se encontró una empresa asociada con este usuario.")
         else:

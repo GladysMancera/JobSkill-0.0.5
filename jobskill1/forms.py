@@ -5,9 +5,9 @@ from .models import *
 
 class crearUsuarioE(UserCreationForm):
     nombre_empresa=forms.CharField(max_length=50)
-    descripcion=forms.CharField(max_length=255)
+    descripcion=forms.CharField(max_length=255, widget=forms.Textarea())
     direccion=forms.CharField(max_length=100)
-    objetivo=forms.CharField(max_length=255)
+    objetivo=forms.CharField(max_length=255, widget=forms.Textarea())
     telefono=forms.CharField(max_length=16)
 
     class Meta:
@@ -19,7 +19,7 @@ class crearUsuarioE(UserCreationForm):
         user.empresa = True
         if commit:
             user.save()
-            empresa_profile = Empresa.objects.create(
+            Empresa.objects.create(
                 user=user,
                 nombre=self.cleaned_data.get('nombre_empresa'),
                 direccion=self.cleaned_data.get('direccion'),
@@ -36,9 +36,9 @@ class crearUsuario(UserCreationForm):
     #email=forms.EmailField()
     apellido_paterno=forms.CharField(max_length=50)
     apellido_materno=forms.CharField(max_length=50, required=False)
-    genero=forms.CharField(max_length=50)
+    genero = forms.ChoiceField(choices=[('M', 'Masculino'), ('F', 'Femenino')], label="Género")
     foto=forms.ImageField(required=False)
-    fecha_de_nacimiento=forms.DateField()
+    fecha_de_nacimiento = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}), label="Fecha de Nacimiento")
 
     class Meta:
         model = CustomUser
@@ -49,7 +49,7 @@ class crearUsuario(UserCreationForm):
         user.usuario = True
         if commit:
             user.save()
-            usuarios_profile = Usuarios.objects.create(
+            Usuarios.objects.create(
                 user=user,
                 nombre=self.cleaned_data.get('nombre'),
                 direccion=self.cleaned_data.get('direccion'),
