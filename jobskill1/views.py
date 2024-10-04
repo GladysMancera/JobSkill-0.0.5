@@ -78,7 +78,7 @@ def registro(request):
                else:
                     return render(request, "registration/register.html", {"form": formCrear})
           else:
-               formCrear=crearUsuarioE(request.POST)
+               formCrear=crearUsuarioE(request.POST, request.FILES)
                if formCrear.is_valid():
                     user=formCrear.save()
                     login(request, user)
