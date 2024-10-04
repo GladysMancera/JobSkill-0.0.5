@@ -1,0 +1,33 @@
+{% extends "paginaEmpresa/base.html"%}
+
+{% load static %}
+
+{% block content %}
+
+
+<div class="container" style="width: 80%; margin: 0 auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+
+    <h2>{{solicitud.postulante.nombre}} {{solicitud.postulante.apellido}} {{solicitud.postulante.apellido2}}</h2>
+        <div style="display: flex;">
+    <img class="profile profile-img" src="{{solicitud.postulante.foto.url}}" alt="Title" />
+    {% if solicitud.aprobado %}
+    <div class="profile"></div>
+        <div class="card-body">
+            <p class="text-secondary">Body</p>
+            <h4 class="text-gradient">Aprobado</h4>
+        </div>
+    </div>
+    {% else %}
+    <div class="profile"></div>
+        <div class="card-body">
+            <p class="text-secondary">Body</p>
+            <form action="" method="post">{% csrf_token %}
+                <button class="btn" type="submit" style="border-color: black;"><h4 class="text-gradient">No aprobado</h4></button>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+
+    </div>
+</div>
+{% endblock %}

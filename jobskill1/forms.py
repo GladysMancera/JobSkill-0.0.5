@@ -9,6 +9,7 @@ class crearUsuarioE(UserCreationForm):
     direccion=forms.CharField(max_length=100)
     objetivo=forms.CharField(max_length=255, widget=forms.Textarea())
     telefono=forms.CharField(max_length=16)
+    foto=forms.ImageField(label="Logo")
 
     class Meta:
         model = CustomUser
@@ -25,6 +26,7 @@ class crearUsuarioE(UserCreationForm):
                 direccion=self.cleaned_data.get('direccion'),
                 telefono=self.cleaned_data.get('telefono'),
                 descripcion=self.cleaned_data.get('descripcion'),
+                foto=self.cleaned_data.get('foto'),
                 objetivo=self.cleaned_data.get('objetivo'),
             )
         return user
@@ -37,7 +39,7 @@ class crearUsuario(UserCreationForm):
     apellido_paterno=forms.CharField(max_length=50)
     apellido_materno=forms.CharField(max_length=50, required=False)
     genero = forms.ChoiceField(choices=[('M', 'Masculino'), ('F', 'Femenino')], label="Género")
-    foto=forms.ImageField(required=False)
+    foto=forms.ImageField()
     fecha_de_nacimiento = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}), label="Fecha de Nacimiento")
 
     class Meta:

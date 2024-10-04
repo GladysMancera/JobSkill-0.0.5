@@ -41,7 +41,6 @@ pero con un contenido diferente-->
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
                             <li class="nav-item"><a class="nav-link" href="{% url 'homeE'%}">Feed empleos</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'agregar'%}">Agregar</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'solicitud'%}">Solicitudes</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'perfil'%}">Perfil</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'cerrarS'%}">Cerrar Sesión</a></li>
                         </ul>
@@ -119,30 +118,7 @@ pero con un contenido diferente-->
             </div>
         </footer>
 
-        <!--Alerta de confirmación al mandar formularios-->
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-        <script>
-            document.querySelector('.btna').addEventListener('click', function(event) {
-                event.preventDefault(); // Prevenir el envío automático del formulario
-
-                Swal.fire({
-                    title: "¿Seguro que todos los datos son correctos?",
-                    text: "Esta acción no se podrá deshacer. Asegurate de que no haya errores antes de continuar.",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Sí, estoy seguro',
-                    cancelButtonText: "Cancelar"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        // Enviar el formulario si el usuario confirma
-                        document.getElementById('postulacionForm').submit();
-                    }
-                });
-            });
-        </script>
-
+        
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->

@@ -13,3 +13,8 @@ class PuestoForm(forms.ModelForm):
             'beneficios': 'Beneficios Ofrecidos',
             'disponibles': 'Vacantes Disponibles'
         }
+        widgets = {
+            'descripcion' : forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Describe la naturaleza del puesto que ofreces...'}),
+            'requisitos' : forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Describe lo que necesitas, puede ser en forma de lista, ej. \n-Ser honesto\n-Ser puntual\n-Tener disponibilidad de tiempo\n-etc.'}),
+            'beneficios' : forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Beneficios extra que tu empresa da, como prestaciones, etc.'}),
+        }

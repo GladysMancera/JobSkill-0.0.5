@@ -8,6 +8,7 @@ class Solicitud(models.Model):
     puesto = models.ForeignKey(Puesto, on_delete=models.CASCADE)
     cv = models.FileField(upload_to="Candidatos")
     solicitudD = models.CharField(max_length=100, blank=True, null=True)
+    aprobado = models.BooleanField(default=False)
     created=models.DateTimeField(auto_now_add=True)
     updated=models.DateTimeField(auto_now_add=True)  
 

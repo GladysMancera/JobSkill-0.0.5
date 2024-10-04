@@ -3,75 +3,56 @@
 {% load static %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Candidatos</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-        }
-        .candidate {
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-        }
-        .candidate h3 {
-            margin: 0 0 10px;
-        }
-        .candidate a {
-            display: inline-block;
-            margin-bottom: 10px;
-            text-decoration: none;
-            color: #007bff;
-        }
-        .candidate button {
-            margin-right: 10px;
-            padding: 5px 10px;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            color: #fff;
-        }
-        .accept {
-            background-color: #28a745;
-        }
-        .reject {
-            background-color: #dc3545;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Notificaciones de Candidatos</h1>
 
-        <!-- Ejemplo de candidato 1 -->
-        <div class="candidate">
+
+<div class="container" style="width: 80%; margin: 0 auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+
+    <h2>Candidatos para el puesto de {{puesto.nombrePuesto}}</h2>
+
+    {% if not solicitudes %}
+        <div class="card text-start">
+            <div class="card-body">
+                <h4 class="card-title" style="text-align: center;">Aún no hay solicitudes de empleados para este puesto</h4>
+            </div>
+        </div>           
+    {% endif %}
+
+    {% for solicitud in solicitudes %}
+    
+    <div style="border: 1px solid #ccc; padding: 16px; margin: 16px 0; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; background-color: #f9f9f9;">
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <!-- Nombre del Postulante -->
+            <div style="font-weight: bold; font-size: 150%; flex: 1; text-align: center; margin: 0 1%;">{{solicitud.postulante.nombre}} {{solicitud.postulante.apellido}}</div>
+    
+            <!-- E-mail del Postulante -->
+            <div style="flex: 1; text-align: center; margin: 0 1%;"><strong>E-mail:</strong> <br><a href="mailto:{{solicitud.postulante.user.email}}">{{solicitud.postulante.user.email}}</a></div>
+    
+            <!-- Razón de Agregado -->
+            <div style="flex: 1; text-align: center; margin: 0 1%;"><strong>Razón que agregó:</strong><br> {{solicitud.solicitudD}}</div>
+    
+            <!-- Puestos disponibles -->
+            <div style="flex: 1; text-align: center; margin: 0 1%;"><strong>Puestos disponibles:</strong> {{solicitud.puesto.disponibles}}</div>
+    
+            <!-- Botón Ver Empleado -->
+            <div style="flex: 1; text-align: center; margin: 0 1%;"><a href="/E/candidato/?id={{solicitud.id}}" class="btn btn-primary">Ver empleado</a></div>
+        </div>
+    </div>
+
+    {% endfor %}
+
+</div>
+<!--
+    <div class="container">
+        <h1></h1>
+
+        Ejemplo de candidato 1 
+        <div class="candidate" style="border: 1px solid #ddd; padding: 10px; margin-bottom: 20px; border-radius: 5px;">
             <h3>Nombre del Candidato 1</h3>
             <p>Email: candidato1@example.com</p>
             <a href="documentos/candidato1.pdf" download>Descargar Solicitud</a>
             <div>
                 <button class="accept" onclick="changeStatus('Candidato 1', 'aceptado')">Aceptar</button>
                 <button class="reject" onclick="changeStatus('Candidato 1', 'rechazado')">Rechazar</button>
-            </div>
-        </div>
-
-        <!-- Ejemplo de candidato 2 -->
-        <div class="candidate">
-            <h3>Nombre del Candidato 2</h3>
-            <p>Email: candidato2@example.com</p>
-            <a href="documentos/candidato2.pdf" download>Descargar Solicitud</a>
-            <div>
-                <button class="accept" onclick="changeStatus('Candidato 2', 'aceptado')">Aceptar</button>
-                <button class="reject" onclick="changeStatus('Candidato 2', 'rechazado')">Rechazar</button>
             </div>
         </div>
 
@@ -84,6 +65,5 @@
             // y actualizar el estado del candidato en tu sistema.
         }
     </script>
-</body>
-</html>
+-->
 {% endblock %}
