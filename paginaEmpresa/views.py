@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 from .forms import PuestoForm
 from .models import Puesto
 from jobskill1.models import Empresa
+from django.shortcuts import render, get_object_or_404, redirect
+
 
 # Create your views here.
 @login_required
@@ -35,14 +37,26 @@ def agregar(request):
         form=PuestoForm()
     return render(request, "paginaEmpresa/agregar.html", {"form":form})
 @login_required
+
+
 def perfil(request):
     if request.user.is_authenticated:
-        if request.user.usuario==True:
+        if hasattr(request.user, 'usuario') and request.user.usuario:
             return redirect("homeU")
+        
+        empresa = get_object_or_404(Empresa, user=request.user)
+        return render(request, "paginaEmpresa/perfil.html", {'empresa': empresa})
+
     return render(request, "paginaEmpresa/perfil.html")
+
+
 @login_required
 def solicitud(request):
     if request.user.is_authenticated:
         if request.user.usuario==True:
             return redirect("homeU")
     return render(request, "paginaEmpresa/solicitud.html")
+
+
+
+
