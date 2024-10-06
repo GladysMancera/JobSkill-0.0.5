@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from .forms import solicitudForm
 from paginaEmpresa.models import Puesto
 from jobskill1.models import Empresa, Usuarios
+from django.shortcuts import render, get_object_or_404, redirect
+
 
 
 # Create your views here.
@@ -13,12 +15,18 @@ def home(request): #No en funcionamiento
         if request.user.empresa==True:
             return redirect("homeE")
     return render(request, "paginaUsuario/home.html")
+
+
 @login_required
 def perfil(request):
     if request.user.is_authenticated:
         if request.user.empresa==True:
             return redirect("homeE")
-    return render(request, "paginaUsuario/perfil.html")
+        datos = get_object_or_404(Usuarios, user=request.user)
+        
+    return render(request, "paginaUsuario/perfil.html", {'datos': datos})
+
+
 @login_required
 def trabajos(request): #Este es el home
     if request.user.is_authenticated:
@@ -26,17 +34,25 @@ def trabajos(request): #Este es el home
             return redirect("homeE")
     puestos=Puesto.objects.all()
     return render(request, "paginaUsuario/trabajos.html", {"puestos":puestos})
+
+
 @login_required
 def trabajosD(request):
     if request.user.is_authenticated:
         if request.user.empresa==True:
             return redirect("homeE")
     return render(request, "paginaUsuario/trabajosD.html")
+
+
+
 def resultado(request):
     if request.user.is_authenticated:
         if request.user.empresa==True:
             return redirect("homeE")
     return render(request, "paginaUsuario/resultado.html")
+
+
+
 @login_required
 def postulacion(request):
     if request.user.is_authenticated:
@@ -71,8 +87,12 @@ def postulacion(request):
     form=solicitudForm()
     request.session["puesto"]=puesto.id
     return render(request, "paginaUsuario/postulacion.html", {"form":form, "puesto":puesto, "empresa":empresa})
+
+
 def notificacion(request):
     if request.user.is_authenticated:
         if request.user.empresa==True:
             return redirect("homeE")
     return render(request, "paginaUsuario/notificacion.html")
+
+
