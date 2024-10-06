@@ -46,40 +46,19 @@
     </style>
 </head>
 <body>
+    <h1>USUARIO</h1>
+
     <div class="profile-container">
-        <h2>Perfil de Usuario</h2>
-        <br>
-        <div class="profile-item">
-            <label>Nombre:</label>
-            <span>Juan</span>
-        </div>
-        <div class="profile-item">
-            <label>Apellido:</label>
-            <span>Pérez</span>
-        </div>
-        <div class="profile-item">
-            <label>Fecha de Registro:</label>
-            <span>01/08/2024</span>
-        </div>
-        <div class="profile-item">
-            <label>Email:</label>
-            <span>juan.perez@example.com</span>
-        </div>
-        <div class="profile-item">
-            <label>Dirección:</label>
-            <span>Calle Falsa 123, Ciudad, País</span>
-        </div>
-        <div class="profile-item">
-            <label>Contraseña:</label>
-            <span>*********</span>
-        </div>
-        <div class="profile-item">
-            <label>Número Telefónico:</label>
-            <span>+123456789</span>
-        </div>
-        <div class="profile-item">
-            <label>Género:</label>
-            <span>Masculino</span>
+    <p>Nombre: {{ datos.nombre}}</p>
+    <p>Dirección: {{ datos.direccion }}</p>
+    <p>Teléfono: {{ datos.telefono }}</p>
+    <p>Correo Electronico: {{ datos.email }}</p>
+    <p>Apellido Paterno: {{ datos.apellido }}</p>
+    <p>Apellido Materno: {{ datos.apellido2 }}</p>
+    <p>Genero: {{ datos.genero }}</p>
+    <p>Foto de perfil: {{ datos.foto }}</p>
+    <p>Fecha de Nacimiento: {{ datos.fecha_nacimiento }}</p>
+
         </div>
     </div>
 </body>
