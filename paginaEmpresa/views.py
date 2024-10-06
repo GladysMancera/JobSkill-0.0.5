@@ -1,10 +1,11 @@
 from django.http import HttpResponseBadRequest
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import PuestoForm
 from .models import Puesto
 from jobskill1.models import Empresa
 from paginaUsuario.models import Solicitud
+
 
 # Create your views here.
 @login_required
@@ -15,6 +16,7 @@ def home(request):
     empresa=Empresa.objects.get(user=request.user)
     puestos=Puesto.objects.filter(empresa=empresa)
     return render(request, "paginaEmpresa/editar.html", {"puestos":puestos})
+
 @login_required
 def agregar(request):
     if request.user.is_authenticated:
@@ -36,12 +38,15 @@ def agregar(request):
     else:
         form=PuestoForm()
     return render(request, "paginaEmpresa/agregar.html", {"form":form})
+
 @login_required
 def perfil(request):
     if request.user.is_authenticated:
-        if request.user.usuario==True:
-            return redirect("homeU")
-    return render(request, "paginaEmpresa/perfil.html")
+            if request.user.usuario==True:
+                return redirect("homeU")  
+    empresa = get_object_or_404(Empresa, user=request.user)
+    return render(request, "paginaEmpresa/perfil.html", {'empresa': empresa})
+
 @login_required
 def solicitud(request):
     if request.user.is_authenticated:
@@ -57,6 +62,7 @@ def solicitud(request):
     solicitudes=Solicitud.objects.filter(puesto=id)
     puesto=Puesto.objects.get(id=id)
     return render(request, "paginaEmpresa/solicitud.html", {"solicitudes":solicitudes, "puesto":puesto})
+
 @login_required
 def postulante(request):
     if request.user.is_authenticated:
@@ -77,3 +83,7 @@ def postulante(request):
             return HttpResponseBadRequest("ID no es un número válido.")
     solicitud=Solicitud.objects.get(id=id)
     return render(request, "paginaEmpresa/postulante.html", {"solicitud":solicitud})
+
+
+
+
