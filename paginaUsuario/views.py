@@ -5,6 +5,9 @@ from .forms import solicitudForm
 from paginaEmpresa.models import Puesto
 from jobskill1.models import Empresa, Usuarios
 from django.shortcuts import render, get_object_or_404, redirect
+from .models import Usuarios
+from .forms import UsuarioForm
+
 
 
 
@@ -95,4 +98,16 @@ def notificacion(request):
             return redirect("homeE")
     return render(request, "paginaUsuario/notificacion.html")
 
+
+def editar_perfil(request):
+    usuario = get_object_or_404(Usuarios, user=request.user)
+    if request.method == 'POST':
+        form = UsuarioForm(request.POST, instance=usuario)
+        if form.is_valid():
+            form.save()
+            return redirect('perfil') 
+    else:
+        form = UsuarioForm(instance=usuario)
+
+    return render(request, 'paginaUsuario/editar_perfil.html', {'form': form})
 

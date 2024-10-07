@@ -1,10 +1,11 @@
-from django.http import HttpResponseBadRequest
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import PuestoForm
 from .models import Puesto
 from jobskill1.models import Empresa
-from paginaUsuario.models import Solicitud
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Empresa
+from .forms import EmpresaForm
 
 
 # Create your views here.
@@ -16,7 +17,6 @@ def home(request):
     empresa=Empresa.objects.get(user=request.user)
     puestos=Puesto.objects.filter(empresa=empresa)
     return render(request, "paginaEmpresa/editar.html", {"puestos":puestos})
-
 @login_required
 def agregar(request):
     if request.user.is_authenticated:
@@ -38,52 +38,37 @@ def agregar(request):
     else:
         form=PuestoForm()
     return render(request, "paginaEmpresa/agregar.html", {"form":form})
-
 @login_required
+
+
 def perfil(request):
     if request.user.is_authenticated:
-            if request.user.usuario==True:
-                return redirect("homeU")  
-    empresa = get_object_or_404(Empresa, user=request.user)
-    return render(request, "paginaEmpresa/perfil.html", {'empresa': empresa})
+        if hasattr(request.user, 'usuario') and request.user.usuario:
+            return redirect("homeU")
+        
+        empresa = get_object_or_404(Empresa, user=request.user)
+        return render(request, "paginaEmpresa/perfil.html", {'empresa': empresa})
+
+    return render(request, "paginaEmpresa/perfil.html")
+
 
 @login_required
 def solicitud(request):
     if request.user.is_authenticated:
         if request.user.usuario==True:
             return redirect("homeU")
-    id=request.GET.get("id")
-    request.session["id"]=id
-    if id is not None:
-        try:
-            id=int(id)
-        except:
-            return HttpResponseBadRequest("ID no es un número válido.")
-    solicitudes=Solicitud.objects.filter(puesto=id)
-    puesto=Puesto.objects.get(id=id)
-    return render(request, "paginaEmpresa/solicitud.html", {"solicitudes":solicitudes, "puesto":puesto})
-
-@login_required
-def postulante(request):
-    if request.user.is_authenticated:
-        if request.user.usuario==True:
-            return redirect("homeU")
-    if request.method=="POST":
-        id=request.session.get("id")
-        solicitud=Solicitud.objects.get(id=id)
-        solicitud.aprobado = True  # Cambia el valor del campo a True
-        solicitud.save()
-        return redirect("home")
-    id=request.GET.get("id")
-    request.session["id"]=id
-    if id is not None:
-        try:
-            id=int(id)
-        except:
-            return HttpResponseBadRequest("ID no es un número válido.")
-    solicitud=Solicitud.objects.get(id=id)
-    return render(request, "paginaEmpresa/postulante.html", {"solicitud":solicitud})
+    return render(request, "paginaEmpresa/solicitud.html")
 
 
+def editar_perfilE(request):
+    empresa = get_object_or_404(Empresa, user=request.user)
 
+    if request.method == 'POST':
+        form = EmpresaForm(request.POST, instance=empresa)
+        if form.is_valid():
+            form.save()
+            return redirect('perfil')  
+    else:
+        form = EmpresaForm(instance=empresa)
 
+    return render(request, 'paginaEmpresa/editar_perfilE.html', {'form': form})
