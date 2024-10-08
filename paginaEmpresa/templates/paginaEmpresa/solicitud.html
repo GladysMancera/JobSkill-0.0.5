@@ -19,7 +19,11 @@
 
     {% for solicitud in solicitudes %}
     
-    <div style="border: 1px solid #ccc; padding: 16px; margin: 16px 0; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; background-color: #f9f9f9;">
+    {% if solicitud.aprobado %}
+        <div style="border: 1px solid #cccccc; padding: 16px; margin: 16px 0; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; background-color: #99ff8c;">
+    {% else %}
+        <div style="border: 1px solid #ccc; padding: 16px; margin: 16px 0; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; background-color: #f9f9f9;">
+    {% endif %}
         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
             <!-- Nombre del Postulante -->
             <div style="font-weight: bold; font-size: 150%; flex: 1; text-align: center; margin: 0 1%;">{{solicitud.postulante.nombre}} {{solicitud.postulante.apellido}}</div>
