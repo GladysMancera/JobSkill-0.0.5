@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import solicitudForm
 from paginaEmpresa.models import Puesto
+from paginaUsuario.models import Solicitud
 from jobskill1.models import Empresa, Usuarios
 from django.shortcuts import render, get_object_or_404, redirect
 
@@ -58,6 +59,7 @@ def postulacion(request):
     if request.user.is_authenticated:
         if request.user.empresa==True:
             return redirect("homeE")
+    usuario=Usuarios.objects.get(user=request.user)
     if request.method=="POST":
         solicitud=solicitudForm(request.POST, request.FILES)
         puesto=Puesto.objects.get(id=request.session.get("id"))
@@ -65,7 +67,6 @@ def postulacion(request):
         if solicitud.is_valid():
             soli=solicitud.save(commit=False)
             try:
-                usuario=Usuarios.objects.get(user=request.user)
                 soli.postulante=usuario
                 soli.puesto=puesto
                 soli.save()
@@ -86,13 +87,16 @@ def postulacion(request):
     empresa=Empresa.objects.get(nombre=puesto.empresa)
     form=solicitudForm()
     request.session["puesto"]=puesto.id
-    return render(request, "paginaUsuario/postulacion.html", {"form":form, "puesto":puesto, "empresa":empresa})
+    solicitud=Solicitud.objects.filter(postulante=usuario, puesto=puesto)
+    return render(request, "paginaUsuario/postulacion.html", {"form":form, "puesto":puesto, "empresa":empresa, "solicitud":solicitud})
 
 
 def notificacion(request):
     if request.user.is_authenticated:
         if request.user.empresa==True:
             return redirect("homeE")
-    return render(request, "paginaUsuario/notificacion.html")
+    usuario=Usuarios.objects.get(user=request.user)
+    solicitud=Solicitud.objects.filter(postulante=usuario)
+    return render(request, "paginaUsuario/notificacion.html", {"solicitudes" : solicitud})
 
 

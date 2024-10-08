@@ -56,7 +56,8 @@
     <p>Apellido Paterno: {{ datos.apellido }}</p>
     <p>Apellido Materno: {{ datos.apellido2 }}</p>
     <p>Genero: {{ datos.genero }}</p>
-    <p>Foto de perfil: {{ datos.foto }}</p>
+    <p>Foto de perfil:</p>
+    <img src="{{ datos.foto.url }}" alt="">
     <p>Fecha de Nacimiento: {{ datos.fecha_nacimiento }}</p>
 
         </div>
