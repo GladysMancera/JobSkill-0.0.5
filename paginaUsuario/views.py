@@ -6,6 +6,9 @@ from paginaEmpresa.models import Puesto
 from paginaUsuario.models import Solicitud
 from jobskill1.models import Empresa, Usuarios
 from django.shortcuts import render, get_object_or_404, redirect
+from .models import Usuarios
+from .forms import UsuarioForm
+
 
 
 
@@ -99,4 +102,16 @@ def notificacion(request):
     solicitud=Solicitud.objects.filter(postulante=usuario)
     return render(request, "paginaUsuario/notificacion.html", {"solicitudes" : solicitud})
 
+
+def editar_perfil(request):
+    usuario = get_object_or_404(Usuarios, user=request.user)
+    if request.method == 'POST':
+        form = UsuarioForm(request.POST, instance=usuario)
+        if form.is_valid():
+            form.save()
+            return redirect('perfil') 
+    else:
+        form = UsuarioForm(instance=usuario)
+
+    return render(request, 'paginaUsuario/editar_perfil.html', {'form': form})
 

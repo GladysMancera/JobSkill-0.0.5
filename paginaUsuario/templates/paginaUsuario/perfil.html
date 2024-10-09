@@ -1,3 +1,4 @@
+
 {% extends "paginaUsuario/base.html"%}
 
 
@@ -6,46 +7,45 @@
 {% block content %}
 
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usuario</title>
+    <title>Perfil de Empresa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 20px;
+
+        .header button:hover {
+            background-color: #0056b3;
         }
-        .profile-container { 
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            max-width: 500px;   /*<!--Reduce o aumenta el tamaño de cuadro del formulario-->*/
-            margin: auto;
-            font-weight: 20%;
-            
+        .company-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
         }
-        .profile-container h2 {
-            margin-top: 0;
-        }
-        .profile-item {
-            margin: 10px 0;
-        }
-        .profile-item label {
-            font-weight: bold;
-            display: inline-block;
+        .company-info img {
             width: 150px;
+            height: auto;
+            margin-right: 20px;
         }
-        .profile-item span {
-            display: inline-block;
+        .company-info h2 {
+            margin: 0;
+            font-size: 24px;
         }
-       
+        .company-info p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 5px 0;
+        }
+        .company-info .contact-info {
+            font-size: 16px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
+<<<<<<< HEAD
+=======
     <h1>USUARIO</h1>
 
     <div class="profile-container">
@@ -59,11 +59,60 @@
     <p>Foto de perfil:</p>
     <img src="{{ datos.foto.url }}" alt="">
     <p>Fecha de Nacimiento: {{ datos.fecha_nacimiento }}</p>
+>>>>>>> ed0c8b1e9f3a57f3ecfde5507fb7f363ee6aec8d
 
+    <div class="container" style="width: 80%; margin: 0 auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+        <div class="header" style="display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;">
+            <h1>Perfil de la Empresa</h1>
+            <button class="btn btn-primary" onclick="window.location.href='{% url 'editar_perfil' %}'">Editar Perfil</button>
         </div>
+
+        <div class="company-info">
+            <img src="logo.png" alt="Logo de la Empresa"> <!-- Cambia 'logo.png' al nombre del archivo de tu logo -->
+            <div>
+                <div class="profile-container">
+                    <p>Nombre: {{ datos.nombre}}</p>
+                    <p>Dirección: {{ datos.direccion }}</p>
+                    <p>Teléfono: {{ datos.telefono }}</p>
+                    <p>Correo Electronico: {{ datos.email }}</p>
+                    <p>Apellido Paterno: {{ datos.apellido }}</p>
+                    <p>Apellido Materno: {{ datos.apellido2 }}</p>
+                    <p>Genero: {{ datos.genero }}</p>
+                    <p>Foto de perfil: {{ datos.foto }}</p>
+                    <p>Fecha de Nacimiento: {{ datos.fecha_nacimiento }}</p>
+                    
+                </div>
+            </div>
+        </div>
+
     </div>
+
 </body>
 </html>
+ {% endblock %}
 
 
-{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

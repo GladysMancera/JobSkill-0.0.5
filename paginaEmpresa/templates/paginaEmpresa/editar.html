@@ -21,10 +21,14 @@
         
         <div class="job-box" id="{{puesto.id}}" style="border: 1px solid #ccc; padding: 16px; margin: 16px 0; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; background-color: #f9f9f9;">
             <div class="job-details">
-                <div class="job-header" style="font-weight: bold; font-size: 150%;">{{puesto.nombrePuesto}}</div>
                 <div class="job-description">
-                    {{puesto.descripcion}}
+
                 </div>
+                
+                <h1><div class="job-company"><strong>Puesto:</strong> {{puesto.nombrePuesto}}</div></h1>
+
+                <div class="job-company"><strong>Descripcion:</strong> {{puesto.descripcion}}</div>
+
                 <div class="job-company"><strong>Se necesita:</strong> {{puesto.requisitos}}</div>
 
                 <div class="job-location"><strong>Beneficios:</strong> {{puesto.beneficios}}</div>
@@ -36,7 +40,8 @@
             </div>
             <div class="job-buttons">
                 <a href="/E/solicitud/?id={{puesto.id}}"><i class="btn btn-success">Ver solicitudes</i></a>
-                <i class="btn btn-success" style="margin: 2px;">Editar</i>
+                <br><button class="btn btn-success" onclick="window.location.href='{% url 'editar_agregar' %}'">Editar</button>
+
                 <!--
                 <i class="fas fa-pencil-alt edit-icon" onclick="editJob('{{puesto.id}}')"></i>
                 <i class="fas fa- delete-icon" onclick="deleteJob('{{puesto.id}}')"></i>

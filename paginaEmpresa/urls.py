@@ -6,5 +6,8 @@ urlpatterns=[
     path('agregar/', agregar, name="agregar"),
     path('perfil/', perfil, name="perfil"),
     path('solicitud/', solicitud, name="solicitud"),
-    path('candidato/', postulante, name="candidato"),
+    path('editar_perfilE/', editar_perfilE, name="editar_perfilE"),
+    path('editar_agregar/',editar_agregar, name="editar_agregar")
+
+
 ]
