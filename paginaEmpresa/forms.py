@@ -3,6 +3,7 @@ from .models import Puesto
 from .models import Empresa
 
 
+
 class PuestoForm(forms.ModelForm):
     class Meta:
         model=Puesto
@@ -21,3 +22,9 @@ class EmpresaForm(forms.ModelForm):
     class Meta:
         model = Empresa
         fields = ['nombre', 'descripcion', 'direccion', 'objetivo', 'telefono']
+        
+class PuestoForm(forms.ModelForm):
+    class Meta:
+        model = Puesto
+        fields = ['nombrePuesto', 'descripcion', 'requisitos', 'beneficios', 'sueldoBase', 'disponibles']
+        

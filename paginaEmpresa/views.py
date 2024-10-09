@@ -72,3 +72,16 @@ def editar_perfilE(request):
         form = EmpresaForm(instance=empresa)
 
     return render(request, 'paginaEmpresa/editar_perfilE.html', {'form': form})
+
+def editar_agregar(request):
+    empresa = get_object_or_404(Empresa, user=request.user)
+    if request.method == 'POST':
+        form = PuestoForm(request.POST, instance=empresa)
+        if form.is_valid():
+            form.save()
+            return redirect('homeE')  
+    else:
+        form = PuestoForm(instance=empresa)
+
+    return render(request, 'paginaEmpresa/editar_agregar.html', {'form': form})
+        
