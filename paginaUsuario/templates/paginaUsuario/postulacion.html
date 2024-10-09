@@ -11,10 +11,18 @@
     <div class="container" style="display: flex; flex: 1; width: 100%;">
         <div class="form-container" style="background-color: #ffffff; width: 47%; padding: 2%; border-radius: 10px; margin: 2%;">
             <h3>Formulario de Postulación</h3>
+
+            {% if not solicitud %}
             <form id="postulacion" action="#" method="post" enctype="multipart/form-data">{% csrf_token %}
                 {{form|crispy}}
                 <input class="btna btn btn-primary" type="submit" value="Enviar Postulación">
             </form>
+            
+            {% else %}
+            <br>
+            <h4 class="text-gradient">Ya has enviado solicitud para este empleo</h4>
+
+            {% endif %}
         </div>
         <div class="info-container" style="background-color: #f1f1f1; width: 47%; padding: 2%; border-radius: 10px; margin: 2%;">
             <h3>Información del Empleo</h3>
